@@ -1,0 +1,1 @@
+Library project fousing on objects and javascript
