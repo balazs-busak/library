@@ -1,25 +1,15 @@
 let cardContainer = document.querySelector(".card-container");
 let myLibrary = [];
-let button = document.getElementById("info");
+let button = document.querySelector(".open-form");
 let myDiv = document.querySelector(".input-form");
 
-function show() {
-    myDiv.style.visibility = "visible";
+function openForm() {
+  myDiv.style.display = "block";
 }
 
-function hide() {
-    myDiv.style.visibility = "hidden";
+function closeForm() {
+  myDiv.style.display = "none";
 }
-
-function toggle() {
-    if (myDiv.style.visibility === "hidden") {
-        show();
-    } else {
-        hide();
-    }
-}
-
-hide();
 
 button.addEventListener("click", toggle, false);
 
@@ -55,6 +45,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 
   createCards();
+  closeForm();
 };
 
 // Call the function to create the cards
