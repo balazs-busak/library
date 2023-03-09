@@ -1,8 +1,32 @@
 let cardContainer = document.querySelector(".card-container");
 let myLibrary = [];
+let button = document.getElementById("info");
+let myDiv = document.querySelector(".input-form");
+
+function show() {
+    myDiv.style.visibility = "visible";
+}
+
+function hide() {
+    myDiv.style.visibility = "hidden";
+}
+
+function toggle() {
+    if (myDiv.style.visibility === "hidden") {
+        show();
+    } else {
+        hide();
+    }
+}
+
+hide();
+
+button.addEventListener("click", toggle, false);
 
 function createCards() {
+  // reset divs, not to duplicate the existing ones
   cardContainer.innerHTML = "";
+  // create new div elemnts with the object stored in myLibrary
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement("div");
 
@@ -15,7 +39,7 @@ function createCards() {
 }
 
 function addBookToLibrary() {
-  // get user input values from HTML form
+  // get user input values from HTML form and push it to the array
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pageNum = document.getElementById("page-number").value;
@@ -33,5 +57,5 @@ function addBookToLibrary() {
   createCards();
 };
 
-// render initial cards
+// Call the function to create the cards
 createCards();
