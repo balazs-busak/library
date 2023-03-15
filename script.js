@@ -1,7 +1,7 @@
 let cardContainer = document.querySelector(".card-container");
-let myLibrary = [];
-let button = document.querySelector(".open-form");
+let addBtn = document.querySelector(".open-form");
 let myDiv = document.querySelector(".input-form");
+let myLibrary = [];
 
 function openForm() {
   myDiv.style.display = "block";
@@ -11,20 +11,27 @@ function closeForm() {
   myDiv.style.display = "none";
 }
 
-button.addEventListener("click", toggle, false);
+addBtn.addEventListener("click", openForm, false);
 
 function createCards() {
-  // reset divs, not to duplicate the existing ones
   cardContainer.innerHTML = "";
-  // create new div elemnts with the object stored in myLibrary
+  // create new div elements with the object stored in myLibrary
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement("div");
 
     card.className = "card";
 
-    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><p>" + myLibrary[i].read + "</p>";
+    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><p>" + myLibrary[i].read + "</p>" + "<button class='remove-button'> Remove </button>";
 
     cardContainer.appendChild(card);
+
+    // event listener created to remove card with button click
+    let removeButton = card.querySelector(".remove-button");
+    removeButton.addEventListener("click", function() {
+      myLibrary.splice(i, 1);
+      // call function so it displays the updated myLibrary array length.
+      createCards(); 
+    });
   }
 }
 
