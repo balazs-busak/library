@@ -19,9 +19,11 @@ function createCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement("div");
 
+    let readStatus = myLibrary[i].read === "Yes" ? "Yes" : "No";
+
     card.className = "card";
 
-    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><p>" + myLibrary[i].read + "</p>" + "<button class='remove-button'> Remove </button>";
+    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><p>" + readStatus + "</p>" + "<button class='remove-button'> Remove </button>";
 
     cardContainer.appendChild(card);
 
@@ -40,19 +42,23 @@ function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pageNum = document.getElementById("page-number").value;
-  let read = document.getElementById("read").value;
+  let readCheck = document.getElementById("read");
+
+  let readStatus = document.getElementById("read").checked ? "Yes" : "No";
 
   let newBook = {
     title: title,
     author: author,
     pageNum: pageNum,
-    read: read
+    read: readStatus
   };
 
   myLibrary.push(newBook);
 
   createCards();
   closeForm();
+  //reset checkbox value when new object is added
+  readCheck.checked = newBook.read === "Yes";
 };
 
 // Call the function to create the cards
