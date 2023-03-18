@@ -16,7 +16,7 @@
     
     <form>
       <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
+      <input type="text" id="title" name="title" required title="Please enter a title">
 
       <label for="author">Author:</label>
       <input type="text" id="author" name="author" required>
@@ -24,9 +24,8 @@
       <label for="page-number">Number of Pages:</label>
       <input type="number" id="page-number" name="page-number" required>
     
-      <label for="read">Have you finished it?:</label>
+      <label for="read" id="read-label">Have you finished it?:</label>
       <input type="checkbox" id="read" />
-      <label for="switch">Toggle</label>
     
       <button type="button" onclick="addBookToLibrary()">Add Object</button>
     </form>

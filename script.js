@@ -19,11 +19,11 @@ function createCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement("div");
 
-    let readStatus = myLibrary[i].read === "Yes" ? "Yes" : "No";
+    let readStatus = myLibrary[i].read ? "Yes" : "No";
 
     card.className = "card";
 
-    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><p>" + readStatus + "</p>" + "<button class='remove-button'> Remove </button>";
+    card.innerHTML = "<h3>" + myLibrary[i].title + "</h3><p>" + myLibrary[i].author + "</p><p>" + myLibrary[i].pageNum + "</p><button class='read-status-button'>" + readStatus + "</button><button class='remove-button'> Remove </button>";
 
     cardContainer.appendChild(card);
 
@@ -34,17 +34,37 @@ function createCards() {
       // call function so it displays the updated myLibrary array length.
       createCards(); 
     });
+
+    // event listener created to toggle read status with button click
+    let readStatusButton = card.querySelector(".read-status-button");
+    readStatusButton.addEventListener("click", function() {
+      myLibrary[i].read = !myLibrary[i].read;
+      let newReadStatus = myLibrary[i].read ? "Yes" : "No";
+      readStatusButton.textContent = newReadStatus;
+    });
   }
+}
+
+
+
+function toggleReadStatus(index) {
+  myLibrary[index].read = !myLibrary[index].read;
+  createCards();
 }
 
 function addBookToLibrary() {
   // get user input values from HTML form and push it to the array
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
-  let pageNum = document.getElementById("page-number").value;
+  let title = document.getElementById("title").value.trim();
+  let author = document.getElementById("author").value.trim();
+  let pageNum = document.getElementById("page-number").value.trim();
   let readCheck = document.getElementById("read");
 
-  let readStatus = document.getElementById("read").checked ? "Yes" : "No";
+  if (!title || !author || !pageNum) {
+    alert("Please fill in all required fields");
+    return;
+  }
+
+  let readStatus = readCheck.checked;
 
   let newBook = {
     title: title,
@@ -58,7 +78,7 @@ function addBookToLibrary() {
   createCards();
   closeForm();
   //reset checkbox value when new object is added
-  readCheck.checked = newBook.read === "Yes";
+  readCheck.checked = false;
 };
 
 // Call the function to create the cards
