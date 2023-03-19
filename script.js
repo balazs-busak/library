@@ -19,7 +19,7 @@ function createCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     let card = document.createElement("div");
 
-    let readStatus = myLibrary[i].read ? "Yes" : "No";
+    let readStatus = myLibrary[i].read ? "Finished" : "Not finished yet.";
 
     card.className = "card";
 
@@ -39,7 +39,7 @@ function createCards() {
     let readStatusButton = card.querySelector(".read-status-button");
     readStatusButton.addEventListener("click", function() {
       myLibrary[i].read = !myLibrary[i].read;
-      let newReadStatus = myLibrary[i].read ? "Yes" : "No";
+      let newReadStatus = myLibrary[i].read ? "Book Finished." : "Not finished yet.";
       readStatusButton.textContent = newReadStatus;
     });
   }
@@ -80,6 +80,7 @@ function addBookToLibrary() {
   //reset checkbox value when new object is added
   readCheck.checked = false;
 };
+
 
 // Call the function to create the cards
 createCards();

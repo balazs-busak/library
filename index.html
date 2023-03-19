@@ -9,29 +9,42 @@
     <title>Library</title>
 </head>
 <body>
-  <h1>Welcome to the library</h1>
-  <h2>Please look around, add your favourite books if you can't see them yet</h2>
-  <button class="open-form" onclick="openForm()">Add book</button>
-  <div class="input-form">
-    
-    <form>
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required title="Please enter a title">
-
-      <label for="author">Author:</label>
-      <input type="text" id="author" name="author" required>
-    
-      <label for="page-number">Number of Pages:</label>
-      <input type="number" id="page-number" name="page-number" required>
-    
-      <label for="read" id="read-label">Have you finished it?:</label>
-      <input type="checkbox" id="read" />
-    
-      <button type="button" onclick="addBookToLibrary()">Add Object</button>
-    </form>
+<div class="main">
+  <div class="header">
+    <h1>Welcome to the library</h1>
+    <h2>Please look around, add your favourite books if you can't see them yet</h2>
   </div>
-  <div class="card-container">
-
+  <div class="content">
+    <div class="left-content">
+      <button class="open-form" onclick="openForm()">Add book</button>
+    <div class="input-form">
+      
+      <form>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required title="Please enter a title">
+  
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+      
+        <label for="page-number">Number of Pages:</label>
+        <input type="number" id="page-number" name="page-number" required>
+      
+        <label for="read" id="read-label">Have you finished it?:</label>
+        <input type="checkbox" id="read" />
+      
+        <button type="button" onclick="addBookToLibrary()">Add Object</button>
+      </form>
+    </div>
+    </div>
+    <div class="right-content">
+      <div class="card-container">
+  
+      </div>
+    </div>
   </div>
+  <div class="footer">
+    Created by Balazs for The Odin Project Library Project.
+  </div>
+</div>
 </body>
 </html>

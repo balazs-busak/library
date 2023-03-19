@@ -1,19 +1,41 @@
-h1,
-h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+:root {
+  --dblue: #0093E9;
+  --bblue: #97D9E1;
+}
+
+body {
+  background-color: var(--bblue);
+  background-image: linear-gradient(to bottom right, var(--bblue), var(--dblue));
+  background-attachment: fixed;
+}
+
+.main {
+}
+
+.header {
+  background-color: white;
+}
+
+.content {
+  display: flex;
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 .card-container {
-    width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto-fill, 1fr);
@@ -22,10 +44,10 @@ form {
 }
 
 .card {
-    width: 300px;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px;
+  width: 300px;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
   }
 
 
